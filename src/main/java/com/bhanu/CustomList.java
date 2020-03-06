@@ -3,24 +3,33 @@ import java.util.Scanner;
 public class CustomList 
 {
 	Node head,tail;
-	CustomList()
+	<T> CustomList()
 	{
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter 10 elements:");
-		int n,t =10;
+		int n;
+		int t =10;
 		while(t>0)
 		{
-			n = sc.nextInt();
-			insert(n);
+			//Exception handling to take care of type mismatch exception while scanning n
+			try {
+				n = sc.nextInt();
+				insert(n);
+			} catch (Exception e) {
+				T n1;
+				n1 = (T) sc.next();
+				insert(n1);
+			}
+			
 			t--;
 		}
 		sc.close();
 	}
-	public void insert(int data)  //Inserts data at the end
+	public <T> void insert(T n)  //Inserts data at the end
 	{
 		Node node= new Node();
 		node.next = null;
-		node.data = data;
+		node.data = n;
 		
 		if(head==null)
 		{
@@ -81,7 +90,7 @@ public class CustomList
 		}
 		}
 	}
-	public int fetch(int pos) //returns the data of node at the given position
+	public  Object fetch(int pos) //returns the data of node at the given position
 	{
 		if(pos==0)
 		{

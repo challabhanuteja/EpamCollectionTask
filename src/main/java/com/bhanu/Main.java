@@ -6,7 +6,8 @@ public class Main {
 		a.insert(11);
 		a.delete(0);
 		a.delete(11);
-		System.out.println(a.fetch(5));
+		a.insert(12.11);
+		System.out.println(a.fetch(10));
 		a.print();
 	}
 
